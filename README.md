@@ -1,5 +1,5 @@
 # WOTPLY
-WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections between selected clusters from the latest time point and the clusters from all the previous time points. The transition matrices between time point t and t+1 are obtained from Waddington-OT analysis (python package [wot](https://broadinstitute.github.io/wot/).
+WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections between selected clusters from the latest time point and the clusters from all the previous time points. The transition matrices between time point t and t+1 are obtained from Waddington-OT analysis (python package [wot](https://broadinstitute.github.io/wot/)).
 
 ## Installation
 
@@ -27,7 +27,7 @@ requires as input:
 4. **time_label** Vector with time information for all the cells from all time points. The length is equal to the one of **cluster_label**
 5. **legend_time** Vector with time information with length equal to the number of time points. 
 6. **customize_color** Character vector with the name of the colours for each cluster (node) in each time point. 
-7. **top_link** Integer.Maximum number of links to select between clusters at time t and clusters at time t+1. Links are sorted according to the weigth and then only the \emph{top_link} are kept. If \emph{NULL} (default), all the links are kept.
+7. **top_link** Integer.Maximum number of links to select between clusters at time t and clusters at time t+1. Links are sorted according to the weigth and then only the **top_link** are kept. If **NULL** (default), all the links are kept.
 
 A ggnet2 plot is generated showing the connections between **selected_stages** from the latest time point and the clusters from previous time points . The number of columns is equal to the numbers of time points. In each column, the cluster of the
 corresponding time point is shown as network node. The weight of the links between clusters at time points t and t+1 refelect the weigth of the
@@ -36,7 +36,7 @@ transition probabilities from **list_transition_matrices**.
 ## Example 
 Below an example of input using the development version of **WOTPLY** from GitHub
 The analysis performed on a single cell RNA seq dataset from human embryo organoids. The data are from day 2 to day 8.
-Below the transition matrices bewteen time points t and t+1 are loaded. Each matrix is the output of **get_transition_matrix** and was built starting from **compute_all_transport_maps** function from pyhton package **WOT**. See ?**get_transition_matrix** for more info.
+Below the transition matrices bewteen time points t and t+1 are loaded. Each matrix is the output of **get_transition_matrix** and was built starting from **compute_all_transport_maps** function from pyhton package [wot](https://broadinstitute.github.io/wot/)). See ?**get_transition_matrix** for more info.
 
 ```r
 load(system.file("extdata", "cluster_label.Rda", package = "WOTPLY"))
