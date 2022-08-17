@@ -1,5 +1,5 @@
 # WOTPLY
-WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections between selected clusters from the latest time point and the clusters from all the previous time points. The transition matrices between time point t and t+1 are obtained from Waddington-OT analysis.
+WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections between selected clusters from the latest time point and the clusters from all the previous time points. The transition matrices between time point t and t+1 are obtained from Waddington-OT analysis (python package [wot](https://broadinstitute.github.io/wot/).
 
 ## Installation
 
