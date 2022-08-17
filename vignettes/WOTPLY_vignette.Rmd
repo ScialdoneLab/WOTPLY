@@ -1,0 +1,82 @@
+---
+title: "WOTPLY"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{WOTPLY}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=7, 
+  fig.height=5
+)
+```
+
+
+```{r setup}
+library(WOTPLY)
+```
+
+
+In this vignette it is shown the analysis performed on a single cell RNA seq dataset from human embryo organoids. The data are from day 2 to day 8.
+Below the transition matrices bewteen time points t and t+1 are loaded. Each matrix is the output of \emph{get_transition_matrix} and was built starting from \emph{compute_all_transport_maps} function from pyhton package \emph{WOT}. See ?\emph{get_transition_matrix} for more info.
+
+```{r}
+
+load(system.file("extdata", "cluster_label.Rda", package = "WOTPLY"))
+load(system.file("extdata", "time_label.Rda", package = "WOTPLY"))
+
+load(system.file("extdata", "transition_matrix_3.Rda", package = "WOTPLY"))
+load(system.file("extdata", "transition_matrix_4.Rda", package = "WOTPLY"))
+load(system.file("extdata", "transition_matrix_6.Rda", package = "WOTPLY"))
+load(system.file("extdata", "transition_matrix_8.Rda", package = "WOTPLY"))
+
+
+
+```
+
+
+
+
+
+```{r}
+list_transition_matrices=list(transition_matrix_3,transition_matrix_4,transition_matrix_6,transition_matrix_8)
+selected_stages=c(3,6,7)
+top_link=3
+
+legend_time=c("day2","day3","day4","day6","day8")
+
+customize_color=c("#808080","#6495ED","#00BFFF","#0000FF","#87CEFA","#4169E1","#87CEEB","#B22222","#DC143C","#FF0000","#FF6347","#FF7F50","#CD5C5C","#F08080","#E9967A","#FA8072","#FFA07A","#FFFF00","#F0E68C","#FFE4C4","#2E8B57","#00FF00","#CD853F","#EE82EE")
+
+```
+
+
+The output of WOTPLY function shows the connections between \emph{selected_stages} from the latest time point and the clusters from previous time points. The number of columns is equal to the numbers of time points. In each column, the cluster of the
+corresponding time point is shown as network node. The weight of the links between clusters at time points t and t+1 refelects the weigth of the
+transition probabilities from \emph{list_transition_matrices}.
+It is possible to change the maximum number of links to select between clusters at time t and clusters at time t+1. Links are sorted according to the weigth and then only the \emph{top_link} are kept. If \emph{NULL} (default), all the links are kept.
+
+```{r}
+#png("/Users/gabriele.lubatti/Downloads/WOTPLY_1.png")
+WOTPLY(list_transition_matrices = list_transition_matrices,selected_stages = selected_stages,cluster_label,time_label = time_label,legend_time = legend_time, customize_color = customize_color, top_link = NULL)
+#dev.off()
+
+```
+
+
+```{r}
+#png("/Users/gabriele.lubatti/Downloads/WOTPLY_2.png")
+WOTPLY(list_transition_matrices = list_transition_matrices,selected_stages = selected_stages,cluster_label,time_label = time_label,legend_time = legend_time, customize_color = customize_color, top_link = 3)
+#dev.off()
+```
+
+
+
+```{r}
+utils::sessionInfo()
+```
