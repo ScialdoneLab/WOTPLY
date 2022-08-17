@@ -13,7 +13,7 @@ devtools::install_github("ScialdoneLab/WOTPLY",auth_token="ghp_1YDRIIRh0GnzSQjG0
 The main function of the package is  **WOTPLY**
 
 
-### SCOPRO
+### WOTPLY
 
 ```r
 WOTPLY(list_transition_matrices, selected_stages, cluster_label, time_label, legend_time, customize_color, top_link = NULL)
