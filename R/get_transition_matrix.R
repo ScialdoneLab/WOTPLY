@@ -4,7 +4,6 @@
 #' @param path Character string with the path to the folder with the oputput of the function compute_all_transport_maps from pyhton package WOT.
 #' @param cluster_t Vector with cluster assignment for cells at time t.
 #' The length is equal to the length of \emph{cells_t}.
-#' @param level_t_plus Vector with the name of the clusters at time t+1.
 #' @param threshold  Numeric value. Only entry of the transition matrix with weight eqaul or above \emph{threshold} are kept.
 #' @param cells_t  Character vector with the name of cells at time t for which we want to obtain the transition matrix.
 #' @description The output of \emph{compute_all_transport_maps} from pyhton package \emph{WOT} is a matrix. Each entry (i,j) describes the
@@ -21,13 +20,13 @@
 #'
 #' @export get_transition_matrix
 #'
+#'
 
-get_transition_matrix <- function(path, cluster_t, level_t_plus, threshold, cells_t){
-
-
+get_transition_matrix = function (path, cluster_t, threshold, cells_t)
+{
   cluster_t <- factor(cluster_t)
   setwd(path)
-  fate_matrix_8 <- read.csv("X.csv",header =F)
+  fate_matrix_8 <- read.csv("X.csv", header = F)
   setwd(path)
   col_names <- read.csv("var.csv")
   col_names <- row.names(col_names)
@@ -36,25 +35,22 @@ get_transition_matrix <- function(path, cluster_t, level_t_plus, threshold, cell
   row_names <- as.vector(row_names$X)
   row.names(fate_matrix_8) <- row_names
   colnames(fate_matrix_8) <- col_names
-
-  mean_next <- rep(list(0),length(levels(cluster_t)))
-  for ( i in 1:length(levels(cluster_t))){
-    fate_small <- fate_matrix_8[cells_t,]
-    fate_small <- fate_small[cluster_t==levels(cluster_t)[i],]
-    fate_small <- fate_small[,colnames(fate_small)!="Other"]
-    mean_day_8 <- apply(fate_small,2,mean)
+  cluster_t = cluster_t[cells_t %in% row.names(fate_matrix_8)]
+  cells_t = cells_t[cells_t %in% row.names(fate_matrix_8)]
+  mean_next <- rep(list(0), length(levels(cluster_t)))
+  for (i in 1:length(levels(cluster_t))) {
+    fate_small <- fate_matrix_8[cells_t, ]
+    fate_small <- fate_small[cluster_t == levels(cluster_t)[i],
+                             ]
+    fate_small <- fate_small[, colnames(fate_small) != "Other"]
+    mean_day_8 <- apply(fate_small, 2, mean)
     mean_next[[i]] <- mean_day_8
-    names(mean_next[[i]]) <- c(level_t_plus)
+    names(mean_next[[i]]) <- col_names[col_names != "Other"]
   }
-
   next_8 <- data.frame(mean_next)
   colnames(next_8) <- levels(cluster_t)
-
-  next_8[next_8<threshold] <-0
-
-
+  next_8[next_8 < threshold] <- 0
   return(next_8)
-
 }
 
 
