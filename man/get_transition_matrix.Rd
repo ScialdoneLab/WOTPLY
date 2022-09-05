@@ -4,15 +4,13 @@
 \alias{get_transition_matrix}
 \title{get_transition_matrix}
 \usage{
-get_transition_matrix(path, cluster_t, level_t_plus, threshold, cells_t)
+get_transition_matrix(path, cluster_t, threshold, cells_t)
 }
 \arguments{
 \item{path}{Character string with the path to the folder with the oputput of the function compute_all_transport_maps from pyhton package WOT.}
 
 \item{cluster_t}{Vector with cluster assignment for cells at time t.
 The length is equal to the length of \emph{cells_t}.}
-
-\item{level_t_plus}{Vector with the name of the clusters at time t+1.}
 
 \item{threshold}{Numeric value. Only entry of the transition matrix with weight eqaul or above \emph{threshold} are kept.}
 
