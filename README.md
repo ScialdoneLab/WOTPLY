@@ -39,24 +39,23 @@ The analysis performed on a single cell RNA seq dataset from a time-course of iP
 Below the transition matrices bewteen time points t and t+1 are loaded. Each matrix is the output of **get_transition_matrix** and was built starting from **compute_all_transport_maps** function from pyhton package [wot](https://broadinstitute.github.io/wot/)). See ?**get_transition_matrix** for more info.
 
 ```r
-load(system.file("extdata", "cluster_label.Rda", package = "WOTPLY"))
-load(system.file("extdata", "time_label.Rda", package = "WOTPLY"))
+load(system.file("extdata", "cluster_label_example.Rda", package = "WOTPLY"))
+load(system.file("extdata", "time_label_example.Rda", package = "WOTPLY"))
 
-load(system.file("extdata", "transition_matrix_3.Rda", package = "WOTPLY"))
-load(system.file("extdata", "transition_matrix_4.Rda", package = "WOTPLY"))
-load(system.file("extdata", "transition_matrix_6.Rda", package = "WOTPLY"))
-load(system.file("extdata", "transition_matrix_8.Rda", package = "WOTPLY"))
+load(system.file("extdata", "example_day_10_12.Rda", package = "WOTPLY"))
+load(system.file("extdata", "example_day_12_14.Rda", package = "WOTPLY"))
+load(system.file("extdata", "example_day_14_16.Rda", package = "WOTPLY"))
+load(system.file("extdata", "example_day_16_18.Rda", package = "WOTPLY"))
 
 ```
 
 ```r
-list_transition_matrices <- list(transition_matrix_3, transition_matrix_4, transition_matrix_6, transition_matrix_8)
-selected_stages <- c(3,6,7)
-top_link <- 3
+list_transition_matrices_example <- list(example_day_10_12,example_day_12_14,example_day_14_16,example_day_16_18)
+selected_stages <- c("IPS","Trophoblast","Epithelial","STROMAL","NEURAL")
+legend_time_example <- c("day_10","day_12","day_14","day_16","day_18")
 
-legend_time <- c("day2", "day3", "day4", "day6", "day8")
 
-customize_color <- c("#808080", "#6495ED", "#00BFFF", "#0000FF", "#87CEFA", "#4169E1", "#87CEEB", "#B22222", "#DC143C", "#FF0000", "#FF6347", "#FF7F50", "#CD5C5C", "#F08080", "#E9967A", "#FA8072", "#FFA07A", "#FFFF00", "#F0E68C", "#FFE4C4", "#2E8B57", "#00FF00", "#CD853F", "#EE82EE")
+customize_color <- WOTPLY:::gg_color_hue(length(levels(factor(cluster_label_example))))
 ```
 
 
@@ -67,12 +66,12 @@ It is possible to change the maximum number of links to select between clusters 
 
 
 ```r
-WOTPLY(list_transition_matrices = list_transition_matrices, selected_stages = selected_stages, cluster_label,time_label = time_label, legend_time = legend_time, customize_color = customize_color, top_link = NULL)
+WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, time_label_example, legend_time_example, customize_color, top_link = NULL)
 ```
 <img src="https://github.com/ScialdoneLab/WOTPLY/blob/main/figures/WOTPLY_1.png" width="500" height="500">
 
 ```r
-WOTPLY(list_transition_matrices = list_transition_matrices, selected_stages = selected_stages, cluster_label, time_label = time_label, legend_time = legend_time, customize_color = customize_color, top_link = 3)
+WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, time_label_example, legend_time_example,customize_color, top_link = 3)
 ```
 <img src="https://github.com/ScialdoneLab/WOTPLY/blob/main/figures/WOTPLY_2.png" width="500" height="500">
 
