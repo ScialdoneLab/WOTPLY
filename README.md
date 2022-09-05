@@ -35,7 +35,7 @@ transition probabilities from **list_transition_matrices**.
 
 ## Example 
 Below an example of input using the development version of **WOTPLY** from GitHub
-The analysis performed on a single cell RNA seq dataset from a time-course of iPS reprogramming. The data are from day 10, day 12, day 14, day 16 and day 18.
+The analysis performed on a single cell RNA seq dataset from a time-course of iPS reprogramming. The data are from day 10, day 12, day 14, day 16 and day 18[Schiebinger et al. 2019](https://www.cell.com/cell/fulltext/S0092-8674(19)30039-X.
 Below the transition matrices bewteen time points t and t+1 are loaded. Each matrix is the output of **get_transition_matrix** and was built starting from **compute_all_transport_maps** function from pyhton package [wot](https://broadinstitute.github.io/wot/)). See ?**get_transition_matrix** for more info.
 
 ```r
