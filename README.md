@@ -40,8 +40,6 @@ Below the transition matrices bewteen time points t and t+1 are loaded. Each mat
 
 ```r
 load(system.file("extdata", "cluster_label_example.Rda", package = "WOTPLY"))
-load(system.file("extdata", "time_label_example.Rda", package = "WOTPLY"))
-
 load(system.file("extdata", "example_day_10_12.Rda", package = "WOTPLY"))
 load(system.file("extdata", "example_day_12_14.Rda", package = "WOTPLY"))
 load(system.file("extdata", "example_day_14_16.Rda", package = "WOTPLY"))
@@ -66,12 +64,12 @@ It is possible to change the maximum number of links to select between clusters 
 
 
 ```r
-WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, time_label_example, legend_time_example, customize_color, top_link = NULL)
+WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, legend_time_example, customize_color, top_link = NULL)
 ```
 <img src="https://github.com/ScialdoneLab/WOTPLY/blob/main/figures/WOTPLY_1.png" width="500" height="500">
 
 ```r
-WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, time_label_example, legend_time_example,customize_color, top_link = 3)
+WOTPLY(list_transition_matrices_example, selected_stages, cluster_label_example, legend_time_example, customize_color, top_link = 3)
 ```
 <img src="https://github.com/ScialdoneLab/WOTPLY/blob/main/figures/WOTPLY_2.png" width="500" height="500">
 
