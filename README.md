@@ -6,7 +6,7 @@ WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections 
 You can install the development version from [GitHub](https://github.com/) with:
 
 ```r
-devtools::install_github("ScialdoneLab/WOTPLY",auth_token="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",ref="main")
+devtools::install_github("ScialdoneLab/WOTPLY", ref="main")
 ```
 
 ## Getting started 
