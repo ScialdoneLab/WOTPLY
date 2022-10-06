@@ -1,3 +1,10 @@
+<!-- badges: start -->
+[![](https://www.r-pkg.org/badges/version/WOTPLY)](https://cran.r-project.org/package=WOTPLY)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/WOTPLY?color=green)](https://cran.r-project.org/package=WOTPLY)
+[![](http://cranlogs.r-pkg.org/badges/WOTPLY?color=green)](https://cran.r-project.org/package=WOTPLY)
+[![](http://cranlogs.r-pkg.org/badges/last-day/WOTPLY?color=green)](https://cran.r-project.org/package=WOTPLY)
+
+
 # WOTPLY
 WOTPLY (Waddington-OT analysis PLot) is an R package that shows the connections between selected clusters from the latest time point and the clusters from all the previous time points. The transition matrices between time point t and t+1 are obtained from Waddington-OT analysis (python package [wot](https://broadinstitute.github.io/wot/)).
 
